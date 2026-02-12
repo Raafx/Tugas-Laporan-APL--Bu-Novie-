@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+    int matriks[2][2];
+
+    cout << "Buat Matriks Terlebih Dahulu\n"
+         << endl;
+
+    for (int i = 0; i < 2; i++)
+    {
+
+        for (int j = 0; j < 2; j++)
+        {
+            cout << "Input Ordo " << i + 1 << " Baris " << j + 1 << ": ";
+            cin >> matriks[i][j];
+        }
+    }
+
+    cout << "\nMatriks Anda: " << endl;
+    for (int i = 0; i < 2; i++)
+    {
+        cout << "\n";
+        for (int j = 0; j < 2; j++)
+        {
+            cout << matriks[i][j] << " ";
+        }
+    }
+
+    float determinan = (matriks[0][0] * matriks[1][1]) - (matriks[0][1] * matriks[1][0]);
+
+    int adjoin[2][2] = {{matriks[1][1], -(matriks[0][1])},
+                        {-(matriks[1][0]), matriks[0][0]}};
+
+    float inversMatriks[2][2];
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            inversMatriks[i][j] = (1 / determinan) * adjoin[i][j];
+        }
+    }
+
+    cout << "\n\nHasil Invers Matriks Anda:" << endl;
+    for (int i = 0; i < 2; i++)
+    {
+        cout << "\n";
+        for (int j = 0; j < 2; j++)
+        {
+            cout << inversMatriks[i][j] << " ";
+        }
+    }
+    return 0;
+}
