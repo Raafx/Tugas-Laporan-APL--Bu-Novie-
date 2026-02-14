@@ -2,21 +2,45 @@
 #include <cmath>
 using namespace std;
 
-float hitungPythagoras(int sisiA, int sisiB, int sisiC)
+bool isPythagoras(int sisiA, int sisiB, int sisiC)
 {
-    if (sisiA * sisiA + sisiB * sisiB == sisiC * sisiC ||
-        sisiB * sisiB + sisiC * sisiC == sisiA * sisiA ||
-        sisiC * sisiC + sisiA * sisiA == sisiB * sisiB)
+
+    // Menggunakan algoritam Bubble sort untuk mencari Sisi Terbesar/Sisi Miring (sisi[2])
+    int sisi[3] = {sisiA, sisiB, sisiC};
+    int n = sizeof(sisi) / sizeof(sisi[0]);
+
+    for (int i = 0; i < n - 1; i++)
     {
-        cout << "Segitiga Siku Siku" << endl;
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (sisi[j] > sisi[j + 1])
+            {
+                int temp = sisi[j];
+                sisi[j] = sisi[j + 1];
+                sisi[j + 1] = temp;
+            }
+        }
     }
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << sisi[i] << endl;
+    }
+
+    int nilaiPythagoras = (sisi[0] * sisi[0]) + (sisi[1] * sisi[1]);
+    int nilaiHypotenuse = sisi[2] * sisi[2];
+
+    cout << "Nilai Pythagoras (a^2 + b^2) = " << nilaiPythagoras << endl;
+    cout << "Nilai c^2 = " << nilaiHypotenuse << endl;
+
+    return (nilaiPythagoras == nilaiHypotenuse);
 }
 
 int main()
 {
-    long sisiA;
-    long sisiB;
-    long sisiC;
+    int sisiA;
+    int sisiB;
+    int sisiC;
 
     cout << "Input Sisi A: ";
     cin >> sisiA;
@@ -25,7 +49,14 @@ int main()
     cout << "Input Sisi C: ";
     cin >> sisiC;
 
-    jenisSegitiga(sisiA, sisiB, sisiC);
+    if (isPythagoras(sisiA, sisiB, sisiC))
+    {
+        cout << "Termasuk Triple Pythagoras" << endl;
+    }
+    else
+    {
+        cout << "Tidak Termasuk Triple Pythagoras" << endl;
+    }
 
     return 0;
 }
