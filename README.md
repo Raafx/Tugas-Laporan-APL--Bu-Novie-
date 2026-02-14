@@ -1,4 +1,4 @@
-#BACA INI BAKIL
+# BACA INI BAKIL
 
 Itu yang dibuat jadi pseudocode cuma: 
 - tugas_1
