@@ -5,10 +5,79 @@ int main()
 {
     struct Buku
     {
-        int nomor;
+        int id;
         string judul;
         string pengarang;
-        };
+        float rating;
+    };
+
+    // Menginput Jumlah Buku
+
+    int jumlahBuku = 0;
+
+    while (jumlahBuku <= 0)
+    {
+
+        cout << "Input Jumlah Buku: ";
+        cin >> jumlahBuku;
+
+        if (jumlahBuku <= 0)
+        {
+            cin.ignore(1000, '\n');
+            cin.clear();
+
+            cout << "Jumlah buku harus berupa angka dan tidak boleh kurang dari 0\n"
+                 << endl;
+        }
+    }
+
+    // Mendeklarasi Pointer listBuku dengan tipe data Array struct Buku[]
+
+    Buku *listBuku = new Buku[jumlahBuku];
+
+    // Menginput data buku menggunakan pointer traversal
+    Buku *ptrInput = listBuku;
+    for (int i = 0; i < jumlahBuku; i++)
+    {
+
+        cin.ignore();
+        ptrInput->id = i + 1;
+        cout << "Input Judul Buku: ";
+        getline(cin, ptrInput->judul);
+        cout << "Input Pengarang Buku: ";
+        getline(cin, ptrInput->pengarang);
+
+        cout << "Input Rating Buku (Skala 0-5): ";
+        cin >> ptrInput->rating;
+        while (ptrInput->rating < 0 || ptrInput->rating > 5)
+        {
+            cout << "Rating harus berdasarkan skala 0-5\n"
+                 << endl;
+
+            cout << "Input Rating Buku (Skala 0-5): ";
+            cin >> ptrInput->rating;
+        }
+
+        cout << "\nBuku Berhasil Ditambahkan!\n"
+             << endl;
+
+        ptrInput += 1;
+    }
+
+    // Menampilkan Buku Menggunakan Pointer Traversal
+
+    Buku *ptrOutput = listBuku;
+
+    for (int i = 0; i < jumlahBuku; i++)
+    {
+        cout << "\nBuku ke-" << i + 1 << endl;
+        cout << "ID        : " << ptrOutput->id << endl;
+        cout << "Judul     : " << ptrOutput->judul << endl;
+        cout << "Pengarang : " << ptrOutput->pengarang << endl;
+        cout << "Rating    : " << ptrOutput->rating << endl;
+
+        ptrOutput += 1;
+    }
 
     return 0;
 }
