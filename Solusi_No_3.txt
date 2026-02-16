@@ -16,7 +16,7 @@ int main()
 
         for (int j = 0; j < 3; j++)
         {
-            cout << "Input Ordo " << i + 1 << " Baris " << j + 1 << ": ";
+            cout << "Input Baris " << i + 1 << " Kolom " << j + 1 << ": ";
             cin >> matriks[i][j];
         }
     }
@@ -48,4 +48,4 @@ int main()
 
     cout << "\nRata-rata matriks anda = " << mean << endl;
     return 0;
-}
+}\
