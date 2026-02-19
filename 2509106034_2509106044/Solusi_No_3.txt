@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+    // Input Matriks
+
+    int matriks[3][3];
+
+    cout << "Buat Matriks Terlebih Dahulu\n"
+         << endl;
+
+    for (int i = 0; i < 3; i++)
+    {
+
+        for (int j = 0; j < 3; j++)
+        {
+            cout << "Input Baris " << i + 1 << " Kolom " << j + 1 << ": ";
+            cin >> matriks[i][j];
+        }
+    }
+
+    cout << "\nMatriks Anda: " << endl;
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "\n";
+        for (int j = 0; j < 3; j++)
+        {
+            cout << matriks[i][j] << " ";
+        }
+    }
+
+    // Hitung Rata-rata (mean)
+
+    int sum = 0;
+    int length = 0;
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            length += 1;
+            sum += matriks[i][j];
+        }
+    }
+
+    float mean = sum / length;
+
+    cout << "\nRata-rata matriks anda = " << mean << endl;
+    return 0;
+}\
